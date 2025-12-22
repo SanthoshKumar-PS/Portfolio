@@ -1,10 +1,18 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "@/components/ui/sonner"
+import Main from "./pages/Main";
 
 function App() {
   
   return (
-  <h1 className="text-3xl font-bold underline ">
-    Santhosh Portfolio
-  </h1> 
+    <BrowserRouter>
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+        <Route path="*" element={<Navigate to='/' replace/>}/>
+      </Routes>
+    </BrowserRouter>
+
   )
 }
 
