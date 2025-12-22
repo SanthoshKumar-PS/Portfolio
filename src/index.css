@@ -181,10 +181,10 @@
   }
 
   .glass {
-    background-color: hsl(var(--card) / 0.8);
-    backdrop-blur: 24px; /* xl */
-    border: 1px solid hsl(var(--border)/0.5);
-  }
+  background-color: color-mix(in srgb, var(--color-card) 80%, transparent);
+  backdrop-filter: blur(var(--blur-xl));
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
 
   .glass-subtle {
     background-color: hsl(var(--card)/0.4);
