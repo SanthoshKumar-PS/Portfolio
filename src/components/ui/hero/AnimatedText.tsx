@@ -17,8 +17,7 @@ const AnimatedText = () => {
     const springY = useSpring(mouseY, { stiffness:150, damping:20 })
 
     const rotateX = useTransform(springY, [-0.5,0.5],[5,-5]);
-    const rotateY = useTransform(springX, [-0.5,0.5],[5,-5]);
-
+    const rotateY = useTransform(springX, [-0.5, 0.5], [-5, 5]);
     const handleMouseMove = (e:React.MouseEvent) => {
         if(!containerRef.current) return
         const rect = containerRef.current.getBoundingClientRect();
@@ -174,8 +173,15 @@ const AnimatedText = () => {
 
         </motion.div>
 
+        {/* Underline */}
+        <motion.div
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"
+            initial = {{ width:0, opacity:0 }}
+            animate =  {{ width:'60%', opacity:1 }}
+            transition = {{ delay:1.8, duration:0.8, ease:'easeOut' }}
+        >
 
-
+        </motion.div>
 
 
     </motion.div>
