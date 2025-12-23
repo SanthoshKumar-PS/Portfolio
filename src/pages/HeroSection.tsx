@@ -6,6 +6,7 @@ import { useRef } from "react"
 import { motion } from 'framer-motion'
 import AnimatedText from "@/components/ui/hero/AnimatedText";
 import ThreeButtons from "@/components/ui/hero/ThreeButtons";
+import TechStackIcons from "@/components/ui/hero/TechStackIcons";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -73,6 +74,26 @@ const HeroSection = () => {
 
           {/* Button - View Project, Resume, Contact Page */}
           <ThreeButtons/>
+
+          {/* Tech Stack */}
+          <motion.div
+            initial={{ opacity:0, y:30 }}
+            animate={{ opacity:1,y:0 }}
+            transition={{ delay:0.9, duration:0.6 }}
+            className="mt-12 md:mt-16 space-y-4 text-center"
+          >
+            <motion.span
+              animate={{ opacity:[0.5, 1, 0.5] }}
+              transition={{ duration:2, repeat:Infinity }}
+              className="block text-sm text-muted-foreground uppercase tracking-widest"
+            >
+              Tech Stack
+            </motion.span>
+            <TechStackIcons/>
+            
+          </motion.div>
+
+
 
 
         </div>
