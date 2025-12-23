@@ -5,6 +5,7 @@ import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react"
 import { motion } from 'framer-motion'
 import AnimatedText from "@/components/ui/hero/AnimatedText";
+import ThreeButtons from "@/components/ui/hero/ThreeButtons";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -69,6 +70,9 @@ const HeroSection = () => {
 
           {/* Main Text */}
           <AnimatedText/>
+
+          {/* Button - View Project, Resume, Contact Page */}
+          <ThreeButtons/>
 
 
         </div>
