@@ -12,7 +12,6 @@ const FloatingParticles = () => {
       delay:Math.random()*5
     }))
   },[])
-  console.log("Particles: ", particles)
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none ">
       {particles.map((particle)=>(
