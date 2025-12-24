@@ -5,6 +5,8 @@ import AnimatedText from "@/components/ui/hero/AnimatedText";
 import ThreeButtons from "@/components/ui/hero/ThreeButtons";
 import TechStackIcons from "@/components/ui/hero/TechStackIcons";
 import MorphingShapes2 from "@/components/ui/hero/MorphingShapes";
+import FloatingParticles from "@/components/ui/hero/FloatingParticles";
+import GlowingOrbs from "@/components/ui/hero/GlowingOrbs";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -25,8 +27,8 @@ const HeroSection = () => {
     >
       {/* TODO: Add 3D Animations */}
       <MorphingShapes2 />
-      {/* <FloatingParticles />
-      <GlowingOrbs /> */}
+      <FloatingParticles />
+      <GlowingOrbs />
 
       {/* Content */}
       <motion.div

@@ -199,6 +199,53 @@ const MorphingShapes2 = () => {
 
       </motion.div>
 
+      {/* Animated dots pattern */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+            style={{
+              left: `${(i % 5) * 25 + 10}%`,
+              top: `${Math.floor(i / 5) * 25 + 10}%`,
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 0.5, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.15,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grid Pattern */}
+      <motion.div
+        className='absolute inset-0 opacity-[0.03]'
+        animate={{
+            backgroundPosition: ["0px 0px", "50px 50px"]
+        }}
+        transition={{
+            duration:20,
+            repeat:Infinity,
+            ease:'linear'
+        }}
+        style={{
+          backgroundImage: `
+            linear-gradient(hsl(var(--primary) / 0.4) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--primary) / 0.4) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      {/* Radial Gradient */}
+      <div className='absolute inset-0 bg-gradient-radial from-transparent via-background/30 to-background'/>
+
 
     </div>
   )
