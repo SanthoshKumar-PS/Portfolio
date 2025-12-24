@@ -1,12 +1,10 @@
-import FloatingParticles from "@/components/ui/hero/FloatingParticles";
-import GlowingOrbs from "@/components/ui/hero/GlowingOrbs";
-import MorphingShapes from "@/components/ui/hero/MorphingShapes";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react"
 import { motion } from 'framer-motion'
 import AnimatedText from "@/components/ui/hero/AnimatedText";
 import ThreeButtons from "@/components/ui/hero/ThreeButtons";
 import TechStackIcons from "@/components/ui/hero/TechStackIcons";
+import MorphingShapes2 from "@/components/ui/hero/MorphingShapes";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -26,11 +24,9 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* TODO: Add 3D Animations */}
-      <div className="hidden">
-        <MorphingShapes />
-        <FloatingParticles />
-        <GlowingOrbs />
-      </div>
+      <MorphingShapes2 />
+      {/* <FloatingParticles />
+      <GlowingOrbs /> */}
 
       {/* Content */}
       <motion.div
