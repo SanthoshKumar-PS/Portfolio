@@ -1,5 +1,18 @@
-import { motion } from "framer-motion";
-
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { motion, useInView } from "framer-motion";
+import { Github, Play } from "lucide-react";
+import { useRef, useState } from "react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 type ProjectType = {
   title:string;
   description:string;
@@ -112,7 +125,18 @@ const projects : ProjectType[] = [
     category: "Backend",
   },
 ];
+
+const categories = ["All", "Web App", "Mobile", "Backend", "E-commerce", "Enterprise", "Healthcare"];
+
 const ProjectsSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedProject, setSelectedProject] = useState<ProjectType|null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, {once:true, margin:'-100px'})
+
+  const filteredProjects = selectedCategory==='All'
+    ? projects
+    : projects.filter(p => p.category === selectedCategory) 
   return (
     <section id="projects" className="section-padding bg-secondary/20">
       <div className="container-custom">
@@ -135,7 +159,153 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
+        {/* Category Filter */}
+        <motion.div
+          initial={{ opacity:0, y:20 }}
+          whileInView={{ opacity:1, y:0 }}
+          viewport={{ once:true }}
+          transition={{ delay:0.2 }}
+          className="flex flex-wrap justify-center gap-2 mb-12"
+        >
+          {categories.map((category,index)=>(
+            <Button
+              key={category}
+              onClick={()=>setSelectedCategory(category)}
+              variant={selectedCategory===category?'hero':'heroOutline'}
+              size='sm'
+            >
+              {category}
+            </Button>
+          ))}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project,index)=>(
+            <motion.div
+              key={project.title}
+              initial={{opacity:0, y:30}}
+              animate={isInView? {opacity:1, y:0}:{}}
+              transition={{ delay:index*0.1, duration:0.5 }}
+              className="group cursor-pointer"
+              onClick={()=>setSelectedProject(project)}
+            >
+              <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col">
+                <div className="p-6 flex-1">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                    {project.title}
+                    </span>
+                    <a href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="p-2 rounded-lg bg-secondary/50 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                    >
+                      <Github size={16}/>
+                    </a>
+                  </div>
+
+                  <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.slice(0, 3).map((tech) => (
+                      <Badge key={tech} variant="outline" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <Badge variant="outline" className="text-xs">
+                        +{project.tech.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+
+            </motion.div>
+          ))}
+          
+        </div>
+
       </div>
+
+      <Dialog open={!!selectedProject} onOpenChange={()=>setSelectedProject(null)}>
+        <DialogContent className="mx-2 max-w-2xl max-h-[90vh] overflow-y-auto glass">
+          {selectedProject && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-display">
+                  {selectedProject.title}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="space-y-6 pt-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-primary mb-2">Problem Solved</h4>
+                  <p className="text-muted-foreground">{selectedProject.problem}</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-primary mb-2">Key Features</h4>
+                  <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                    {selectedProject.features.map(feature=>(
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-primary mb-2">Challenges & Solutions</h4>
+                  <p className="text-muted-foreground">{selectedProject.challenges}</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-primary mb-2">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map(tech=>(
+                      <Badge key={tech} variant='secondary'>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex gap-3 pt-4">
+                  <a 
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <Button variant='outline' className="w-full">
+                      <Github className="mr-2 h-4 w-4"/>
+                      View on Github
+                    </Button>
+                  </a>
+                  <a 
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <Button variant='default' className="w-full">
+                      <Play className="mr-2 h-4 w-4"/>
+                      View Live
+                    </Button>
+                  </a>
+
+                </div>
+
+                
+
+              </div>
+            </>
+          )}
+        </DialogContent>
+
+      </Dialog>
 
     </section>
   )
