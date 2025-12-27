@@ -22,6 +22,7 @@ type ProjectType = {
   features:string[];
   challenges:string;
   github:string;
+  live:string;
   category:string;
 }
 const projects : ProjectType[] = [
@@ -34,6 +35,7 @@ const projects : ProjectType[] = [
     features: ["Real-time stock tracking", "Multi-warehouse support", "Analytics dashboard", "Automated alerts"],
     challenges: "Implementing real-time sync across distributed systems",
     github: "https://github.com/santhoshkumar/inventory-management-trendora",
+    live: "https://github.com/santhoshkumar/inventory-management-trendora",
     category: "Web App",
   },
   {
@@ -45,6 +47,7 @@ const projects : ProjectType[] = [
     features: ["Product catalog", "Cart management", "Payment integration", "Order tracking"],
     challenges: "Optimizing performance for large product catalogs",
     github: "https://github.com/santhoshkumar/trendora-shopping",
+    live: "https://github.com/santhoshkumar/trendora-shopping",
     category: "E-commerce",
   },
   {
@@ -56,6 +59,7 @@ const projects : ProjectType[] = [
     features: ["Leave requests", "Approval workflows", "Calendar integration", "Reports"],
     challenges: "Building complex approval hierarchies with role-based access",
     github: "https://github.com/santhoshkumar/leave-management",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Enterprise",
   },
   {
@@ -67,6 +71,7 @@ const projects : ProjectType[] = [
     features: ["Task categories", "Due dates", "Offline mode", "Dark theme"],
     challenges: "Implementing seamless offline-online sync",
     github: "https://github.com/santhoshkumar/flutter-todo",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Mobile",
   },
   {
@@ -78,6 +83,7 @@ const projects : ProjectType[] = [
     features: ["Current weather", "7-day forecast", "Location-based", "Weather alerts"],
     challenges: "Creating smooth animations for weather transitions",
     github: "https://github.com/santhoshkumar/weather-app",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Mobile",
   },
   {
@@ -89,6 +95,7 @@ const projects : ProjectType[] = [
     features: ["Restaurant listings", "Cart system", "Live tracking", "Payment processing"],
     challenges: "Implementing real-time order tracking with maps integration",
     github: "https://github.com/santhoshkumar/food-delivery",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Mobile",
   },
   {
@@ -100,6 +107,7 @@ const projects : ProjectType[] = [
     features: ["Appointment booking", "Patient records", "Treatment plans", "Billing"],
     challenges: "Ensuring HIPAA-compliant data handling",
     github: "https://github.com/santhoshkumar/physiotherapy-clinic",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Healthcare",
   },
   {
@@ -111,6 +119,7 @@ const projects : ProjectType[] = [
     features: ["Custom aliases", "Click analytics", "QR codes", "API access"],
     challenges: "Handling high-throughput URL redirections efficiently",
     github: "https://github.com/santhoshkumar/url-shortener",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Backend",
   },
   {
@@ -122,6 +131,7 @@ const projects : ProjectType[] = [
     features: ["Template engine", "Queue management", "Delivery tracking", "Rate limiting"],
     challenges: "Building fault-tolerant queue processing with retry logic",
     github: "https://github.com/santhoshkumar/email-notification",
+    live: "https://github.com/santhoshkumar/leave-management",
     category: "Backend",
   },
 ];
@@ -285,7 +295,7 @@ const ProjectsSection = () => {
                     </Button>
                   </a>
                   <a 
-                    href={selectedProject.github}
+                    href={selectedProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1"
