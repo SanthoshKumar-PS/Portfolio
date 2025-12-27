@@ -189,9 +189,9 @@ const SkillsSection = () => {
           whileInView={{opacity:1, y:0}}
           viewport={{once:true}}
           transition={{delay:0.5, duration:0.5}}
-          className="mt-12 glass rounded-2xl p-8"
+          className="mt-12 glass rounded-2xl p-8 "
         >
-          <h3>
+          <h3 className="mb-2">
             Other Skills & Competencies
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
