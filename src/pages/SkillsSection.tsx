@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 type SkillCategory = {
   title: string;
   skills: { name: string; level: number }[];
@@ -67,6 +69,60 @@ const otherSkills = [
   "Testing",
   "CI/CD Basics",
 ];
+
+const AnimatedCounter = ({ value, inView } : { value:number; inView:boolean }) => {
+  const [count, setCount] = useState<number>(0)
+
+  useEffect(()=>{
+    if(!inView) return;
+
+    let start = 0;
+    const duration = 1500
+    const increment = value/(duration/16)
+
+    const timer = setInterval(()=>{
+      start+=increment;
+      if(start>=value){
+        setCount(value)
+        clearInterval(timer)
+      } else{
+        setCount(Math.floor(start))
+      }
+    },16)
+    return ()=>clearInterval(timer)
+  },[value,inView])
+
+  return <span>{count}%</span>
+}
+
+const SkillBar = ({ skill, index, inView }:{ skill: { name: string; level: number }, index:number, inView:boolean }) => {
+  return (
+    <motion.div
+      initial={{opacity:0, x:-20}}
+      animate={inView?{opacity:1, x:0}:{}}
+      transition={{ delay:index*0.1, duration:0.5 }}
+      className="space-y-2"
+    >
+      <div className="flex justify-between items-center">
+        <span className="text-sm font-medium text-foreground">{skill.name}</span>
+        <span className="text-sm text-primary font-semibold">
+          <AnimatedCounter value={skill.level} inView={inView}/>
+        </span>
+      </div>
+      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+        <motion.div
+          initial={{width:0}}
+          animate={inView?{width:`${skill.level}%`}:{width:0}}
+          transition={{ delay:0.3+index*0.1, duration:1, ease:'easeOut' }}
+          className="h-full rounded-full bg-gradient-to-r from-primary to-glow-secondary"
+        />
+
+      </div>
+
+    </motion.div>
+  )
+}
+
 const SkillsSection = () => {
   return <div>SkillsSection</div>;
 };
