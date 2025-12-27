@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 type SkillCategory = {
   title: string;
   skills: { name: string; level: number }[];
@@ -124,7 +124,98 @@ const SkillBar = ({ skill, index, inView }:{ skill: { name: string; level: numbe
 }
 
 const SkillsSection = () => {
-  return <div>SkillsSection</div>;
+  const ref = useRef(null);
+  const inView = useInView(ref,{once:true, margin:'-100px'})
+  return (
+    <section id="skills" className="relative section-padding bg-gradient-to-b from-secondary/20 to-background overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-40 left-1/4 w-80 h-80 bg-primary rounded-full blur-3xl"/>
+        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-glow-secondary rounded-full blue-3xl"/>
+      </div>
+
+      <div className="container-custom relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{opacity:0, y:30}}
+          whileInView={{opacity:1, y:0}}
+          viewport={{once:true}}
+          transition={{duration:0.6}}
+          className="text-center mb-16"
+        >
+          <span className="text-primary text-sm font-medium uppercase tracking-widest">Enterprise</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6">
+            Skills & <span className="gradient-text">Technologies</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            A comprehensive overview of my technical toolkit and proficiency levels.
+          </p>
+        </motion.div>
+
+        {/* Skills */}
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((category,categoryIndex)=>(
+            <motion.div
+              key={category.title}
+              initial={{opacity:0, y:30}}
+              animate={inView?{opacity:1, y:0}:{}}
+              transition={{delay:categoryIndex*0.1,duration:0.5}}
+              className="glass rounded-2xl p-6 card-hover"
+            >
+              <h3 className="font-display text-xl font-semibold mb-6 flex items-center gap-3">
+                <span className="w-2 h-8 bg-gradient-to-b from-primary to-glow-secondary rounded-full"></span>
+                {category.title}
+              </h3>
+              <div className="space-y-5">
+                {category.skills.map((skill,skillIndex)=>(
+                  <SkillBar
+                    key={skill.name}
+                    skill={skill}
+                    index={skillIndex}
+                    inView={inView}
+                  />
+                ))}
+
+              </div>
+
+            </motion.div>
+          ))}
+
+        </div>
+
+        {/* AdditionalSkills */}
+        <motion.div
+          initial={{opacity:0, y:30}}
+          whileInView={{opacity:1, y:0}}
+          viewport={{once:true}}
+          transition={{delay:0.5, duration:0.5}}
+          className="mt-12 glass rounded-2xl p-8"
+        >
+          <h3>
+            Other Skills & Competencies
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {otherSkills.map((skill, index)=>(
+              <motion.span
+                key={skill}
+                initial={{opacity:0, scale:0.8,x:-40}}
+                whileInView={{opacity:1, scale:1,x:0}}
+                viewport={{once:true}}
+                transition={{delay:0.6+index*0.05,ease:'easeInOut'}}
+                className="px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
+              >
+                {skill}
+              </motion.span>
+            ))}
+
+          </div>
+
+        </motion.div>
+
+      </div>
+
+    </section>
+  )
 };
 
 export default SkillsSection;
