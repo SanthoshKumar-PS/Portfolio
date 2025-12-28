@@ -86,7 +86,7 @@ const ContactSection = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="font-display text-2xl font-semibold mb-6">
+              <h3 className="font-display text-2xl font-semibold mb-6 gradient-text">
                 Contact Information
               </h3>
               <p className="text-muted-foreground mb-8">
@@ -165,7 +165,7 @@ const ContactSection = () => {
             transition={{delay:0.3, duration:0.6}}
           >
             <div className="glass rounded-2xl p-8">
-              <h3 className="font-display text-2xl font-semibold mb-6">
+              <h3 className="font-display text-2xl font-semibold mb-6 gradient-text">
                 Send a Message
               </h3>
 
@@ -186,34 +186,56 @@ const ContactSection = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                      Subject
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      Email
                     </label>
                     <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder="What's this about?"
+                      placeholder="your2gmail.com"
                       required
                       className="bg-secondary/50 border-border focus:border-primary"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell me about your project or opportunity..."
-                      rows={5}
-                      required
-                      className="bg-secondary/50 border-border focus:border-primary resize-none"
-                    />
-                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    Subject
+                  </label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="What's this about?"
+                    required
+                    className="bg-secondary/50 border-border focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project or opportunity..."
+                    rows={5}
+                    required
+                    className="bg-secondary/50 border-border focus:border-primary resize-none"
+                  />
+                </div>
 
                   <Button
                     type="submit"
@@ -241,7 +263,6 @@ const ContactSection = () => {
 
                   </Button>
 
-                </div>
 
               </form>
 
