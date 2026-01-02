@@ -25,7 +25,6 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* TODO: Add 3D Animations */}
       <MorphingShapes2 />
       <FloatingParticles />
       <GlowingOrbs />
