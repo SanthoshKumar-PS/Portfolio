@@ -42,9 +42,9 @@ const Header = () => {
       const id = href.substring(1);
       const element = document.getElementById(id);
       if (element) {
-        const offset = 80;
+        const offset = 60;
         const top =
-          element.getBoundingClientRect().top + window.screenY - offset;
+          element.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: "smooth" });
       }
     }, 150);
