@@ -8,7 +8,7 @@ const experiences = [
     location: "Chennai",
     period: "Jun 2025 – Present",
     description: [
-      "Build and scale responsive web applications for clients using React, Node.js, and PostgreSQL",
+      "Build and scale responsive web applications for clients using React, Node.js, MySQL, Prisma ORM.",
       "Deliver high-performance, maintainable, and user-focused solutions",
       "Collaborate with cross-functional teams to define and implement new features",
       "Optimize application performance and ensure code quality through reviews",
@@ -29,26 +29,24 @@ const experiences = [
     current: false,
   },
   {
-    title: "MERN Stack Developer",
+    title: "MERN Stack Developer Intern",
     company: "VCodez",
     location: "Chennai",
     period: "Jul 2024 – Dec 2024",
     description: [
-      "Collaborated on frontend and backend features for client projects",
+      "Collaborated on frontend and backend features for projects",
       "Optimized APIs for improved performance and scalability",
-      "Enhanced user interfaces for better user experience",
       "Participated in code reviews and contributed to team knowledge sharing",
     ],
     current: false,
   },
   {
-    title: "Junior Web Developer",
+    title: "Junior Web Developer Intern",
     company: "PageOnTop",
     location: "Coimbatore",
     period: "Apr 2023 – Sept 2023",
     description: [
       "Gained understanding of client requirements and project specifications",
-      "Planned and executed web development tasks efficiently",
       "Regularly reviewed code to ensure functionality and performance standards",
       "Performed thorough testing and debugging before website deployment",
     ],

@@ -13,17 +13,17 @@ const skillCategories: SkillCategory[] = [
       { name: "TypeScript", level: 85 },
       { name: "Java", level: 75 },
       { name: "Python", level: 70 },
-      { name: "Dart", level: 80 },
+      { name: "Dart", level: 55 },
     ],
   },
   {
     title: "Frontend",
     skills: [
       { name: "React", level: 90 },
-      { name: "Flutter", level: 85 },
-      { name: "HTML/CSS", level: 95 },
+      { name: "Flutter", level: 65 },
+      { name: "HTML/CSS", level: 85 },
       { name: "Tailwind CSS", level: 90 },
-      { name: "Next.js", level: 75 },
+      
     ],
   },
   {
@@ -50,22 +50,21 @@ const skillCategories: SkillCategory[] = [
       { name: "Git", level: 90 },
       { name: "GitHub", level: 90 },
       { name: "Postman", level: 85 },
-      { name: "Docker", level: 70 },
       { name: "VS Code", level: 95 },
     ],
   },
 ];
 const otherSkills = [
   "Problem Solving",
+  "API Design",
   "Agile/Scrum",
+  "System Design",
   "Code Review",
   "Team Collaboration",
-  "Technical Writing",
   "Debugging",
   "Performance Optimization",
   "Responsive Design",
   "Version Control",
-  "API Design",
   "Testing",
   "CI/CD Basics",
 ];

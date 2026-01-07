@@ -4,7 +4,8 @@ import { Mail, Linkedin, Github, MapPin, Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import { sendEmailMessage, type ContactParams } from "@/services/emailservice";
+import { toast } from "sonner";
 
 const contactInfo = [
   {
@@ -33,22 +34,41 @@ const contactInfo = [
   },
 ];
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactParams>({
     name:"",
     email:"",
     subject:"",
     message:""
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise(resolve=> setTimeout(resolve,1500)) 
-    setIsSubmitting(false)
-    setIsSubmitted(false)
+    const sendPromise = sendEmailMessage(formData);
+    toast.promise(sendPromise,{
+      loading:'Send your message...',
+      success: ()=>{
+        return (
+        <div className="flex flex-col gap-1">
+          <b className="text-primary-foreground font-display">Message sent!</b>
+          <p className="text-primary-foreground text-xs font-sans">
+            Check your inbox for confirmation.
+          </p>
+        </div>
+        );
+      },
+      error: 'Could not send message. Please try again.',
+    })
+    try{
+      await sendPromise;
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch(error:any){
+      console.log(error)
+    } finally{
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -242,7 +262,7 @@ const ContactSection = () => {
                     variant='hero'
                     size='lg'
                     className="w-full"
-                    disabled={isSubmitting || isSubmitted}
+                    disabled={isSubmitting}
                   >
                     {isSubmitting? (
                       <>
