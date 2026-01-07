@@ -2,6 +2,8 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ArrowRight, Download, Mail, Sparkles } from 'lucide-react'
 import { useRef } from 'react';
 import { Button } from '../button';
+
+export const RESUME_URL = 'https://drive.google.com/file/d/1dZDWePWvaQ24LwPWZB_0MkO_M04dh_TJ/view?usp=sharing'
 interface AnimatedButtomProps {
     children: React.ReactNode;
     href: string;
@@ -70,7 +72,11 @@ const AnimatedButton  = ({children, href, variant='hero', delay}:AnimatedButtomP
                 variant={variant}
                 size='lg'
                 className='group relative overflow-hidden cursor-pointer'
-                onClick={()=>scrollToSection(href)}
+                onClick={()=>
+                    href==='resume'
+                        ? window.open(RESUME_URL,'_blank', 'noopener,noreferrer')
+                        : scrollToSection(href)
+                    }
             >
                 {/* Background Shimmer Animation */}
                 <motion.span
@@ -136,7 +142,7 @@ const ThreeButtons = () => {
         </AnimatedButton>
 
         {/* Download Resume */}
-        <AnimatedButton href='#projects' variant='heroOutline' delay={1.2}>
+        <AnimatedButton href='resume' variant='heroOutline' delay={1.2}>
             <span className='relative z-10 flex items-center gap-2'>
                 <motion.span
                     animate = {{ y:[0,-3,0] }}

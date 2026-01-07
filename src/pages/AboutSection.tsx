@@ -60,7 +60,7 @@ const AboutSection = () => {
                 My Journey
               </h3>
               <p className="text-muted-foreground mb-4">
-                My journey into software development began during my Computer Science studies at Sri Krishna College of Technology, where I discovered my passion for building applications that make a real difference. What started as curiosity about how software works evolved into a deep commitment to creating elegant, efficient solutions.
+                My journey into software development started during my Computer Science studies at Sri Krishna College of Technology, where I discovered my passion for building applications that make a real difference. What started as curiosity about how software works evolved into a deep commitment to creating elegant, efficient solutions.
               </p>
               <p className="text-muted-foreground mb-4">
                 From developing responsive web applications with React and Node.js to crafting 
@@ -90,9 +90,7 @@ const AboutSection = () => {
               </div>
 
               <p className="text-muted-foreground text-sm">
-                Building scalable architectures, optimizing performance bottlenecks, 
-                creating seamless user experiences, and bridging the gap between 
-                complex backend systems and intuitive frontends.
+                Architecting scalable systems, optimizing backend performance, delivering seamless user experiences, and connecting complex backend infrastructures with intuitive frontends.
               </p>
             </div>
 
@@ -108,9 +106,7 @@ const AboutSection = () => {
               </div>
 
               <p className="text-muted-foreground text-sm">
-                Always expanding my toolkit—currently diving deeper into cloud 
-                architecture, microservices patterns, and exploring the latest 
-                advancements in AI/ML integration for web applications.
+                Actively deepening my expertise in system design, backend optimization, and building scalable microservices-based systems.
               </p>
             </div>
 

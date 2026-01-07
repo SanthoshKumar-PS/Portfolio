@@ -7,7 +7,7 @@ import type { Variants } from "framer-motion";
 const AnimatedText = () => {
     const name = "Santhosh Kumar P S"
     const title = "Full Stack Developer"
-    const subtitle = "React & MySql Specialist"
+    const subtitle = "React & MySQL Developer"
     const containerRef = useRef<HTMLDivElement>(null);
 
     const mouseX = useMotionValue(0);
