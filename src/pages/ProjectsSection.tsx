@@ -27,6 +27,26 @@ type ProjectType = {
 }
 const projects : ProjectType[] = [
   {
+    title: "LawVault",
+    description: "A secure, enterprise-grade file management and document vaulting system with granular access control.",
+    problem: "Organizations needed a centralized, secure way to manage sensitive documents with strict permission-based access and high availability.",
+    role: "Full Stack Developer",
+    tech: ["React", "Node.js", "MySQL", "Prisma ORM", "AWS S3", "REST APIs", "TailwindCSS", "TypeScript", "JWT"],
+    features: [
+      "Role-Based Access Control (RBAC) for document security",
+      "Secure file uploads and storage using AWS S3 infrastructure",
+      "Administrative dashboard for granting/revoking user permissions",
+      "Real-time file status and metadata synchronization",
+      "Token-based authentication (JWT) with session management",
+      "Audit trail of file operations (MySQL as the source of truth)",
+      "Dynamic folder structures based on user authorization levels"
+    ],
+    challenges: "Synchronizing distributed S3 cloud storage with local MySQL metadata while ensuring zero-latency permission checks.",
+    github: "https://github.com/SanthoshKumar-PS/LawVault",
+    live: null,
+    category: "Cloud Storage & Security",
+  },
+  {
     title: "Inventory Management - Trendora",
     description: "A comprehensive inventory management system for e-commerce businesses",
     problem: "Small businesses struggled with tracking inventory across multiple channels",
@@ -197,7 +217,7 @@ const projects : ProjectType[] = [
   }
 ];
 
-const categories = ["All", "E-commerce", "React-Frontend", "Backend", "Flutter/Mobile", "Healthcare"];
+const categories = ["All", "Cloud Storage & Security", "E-commerce", "React-Frontend", "Backend", "Flutter/Mobile", "Healthcare"];
 
 const ProjectsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');

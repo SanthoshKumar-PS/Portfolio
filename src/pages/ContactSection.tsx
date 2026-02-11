@@ -215,7 +215,7 @@ const ContactSection = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="your2gmail.com"
+                      placeholder="you@gmail.com"
                       required
                       className="bg-secondary/50 border-border focus:border-primary"
                     />
